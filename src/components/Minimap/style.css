@@ -1,0 +1,19 @@
+.minimapWindow {
+  width: 114px;
+  height: 400px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: scroll;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.minimapWindow__preview {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  transform-origin: left top;
+}

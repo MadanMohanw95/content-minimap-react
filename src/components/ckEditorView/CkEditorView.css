@@ -1,0 +1,38 @@
+.minimapWindow {
+  width: 114px;
+  height: 300px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: scroll;
+  overflow: hidden;
+}
+
+.minimapWindow__preview {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  transform-origin: left top;
+}
+
+.main-view {
+  width: 750px;
+  height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.p-style {
+  color: blue;
+}
+
+.inline-para2 {
+  color: orange;
+}
+
+.inline-para {
+  color: magenta;
+}
