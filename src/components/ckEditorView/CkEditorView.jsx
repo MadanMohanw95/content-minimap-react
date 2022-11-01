@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Minimap from '../Minimap/Minimap';
 import styles from './CkEditorView.css';
+import { ScrollSync, ScrollSyncNode } from 'scroll-sync-react';
 // import Minimap from 'react-simple-minimap';
 
 class CkEditorView extends Component {
   renderPage = () => (
     <>
       <h1>Page</h1>
-      <p className="inline-para">
+      <p className="pcolor-magenta">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -31,7 +32,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p className="inline-para2">
+      <p className="pcolor-orange">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -55,7 +56,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p className="p-style">
+      <p className="pcolor-blue">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -79,7 +80,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      {/* <p>
+      <p className="pcolor-magenta">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -103,7 +104,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p>
+      <p className="pcolor-blue">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -127,7 +128,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p>
+      <p className="pcolor-orange">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -151,7 +152,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p>
+      <p className="pcolor-blue">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -175,7 +176,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p>
+      <p className="pcolor-magenta">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -199,7 +200,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p>
+      <p className="pcolor-orange">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -223,7 +224,7 @@ class CkEditorView extends Component {
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
       </p>
-      <p>
+      <p className="pcolor-blue">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
         mollitia, molestiae quas vel sint commodi repudiandae consequuntur
         voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -246,18 +247,48 @@ class CkEditorView extends Component {
         ab laudantium modi minima sunt esse temporibus sint culpa, recusandae
         aliquam numquam totam ratione voluptas quod exercitationem fuga.
         Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!
-      </p> */}
+      </p>
     </>
   );
 
   render() {
     return (
       <div className="container" id="container-view">
-        <div className="minimap-view">
-          <Minimap of={this.renderPage()} />
-        </div>
-        <div className="main-view" id="main-view">
-          {this.renderPage()}
+        <div className='split-view'>
+          <div className="minimap-view">
+            <Minimap of={this.renderPage()} />
+          </div>
+          {/* <div className="main-view" id="main-view">
+            {this.renderPage()}
+          </div>
+
+          <div className="main-view" id="main-view1">
+            {this.renderPage()}
+          </div> */}
+
+          <ScrollSync>
+            <div style={{ display: "flex", position: "relative", height: 700}}>
+              <ScrollSyncNode>
+                <div style={{ overflow: "auto" }}>
+                  <section style={{ height: 1000 }}>
+                    <div className="main-view" id="main-view">
+                    {this.renderPage()}
+                    </div>
+                  </section>
+                </div>
+              </ScrollSyncNode>
+              <ScrollSyncNode>
+                <div style={{ overflow: "auto" }}>
+                  <section style={{ height: 1000 }}>
+                   <div className="main-view" id="main-view1">
+                    {this.renderPage()}
+                    </div>
+                  </section>
+                </div>
+              </ScrollSyncNode>
+            </div>
+          </ScrollSync>
+
         </div>
       </div>
     );

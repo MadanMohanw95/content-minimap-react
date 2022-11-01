@@ -18,21 +18,25 @@
 }
 
 .main-view {
-  width: 750px;
-  height: 600px;
-  overflow: scroll;
-  overflow-x: hidden;
+  width: 100%;
+  height: 50rem;
+  /* overflow: scroll; */
+  /* overflow-x: hidden; */
   position: relative;
 }
 
-.p-style {
-  color: blue;
+.pcolor-magenta {
+  color: magenta;
 }
 
-.inline-para2 {
+.pcolor-orange {
   color: orange;
 }
 
-.inline-para {
-  color: magenta;
+.pcolor-blue {
+  color: blue;
+}
+
+.split-view {
+  display: flex;
 }

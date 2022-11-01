@@ -701,6 +701,11 @@ scheduler@^0.23.0:
   dependencies:
     loose-envify "^1.1.0"
 
+scroll-sync-react@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/scroll-sync-react/-/scroll-sync-react-1.2.0.tgz#9f9196e17bd3503a67945943ba5313c77e1d9d16"
+  integrity sha512-nGWhT66gA2yzx/Xb4FfmDazZEM/P1bAcFc3pdR1ZF9sJtyrQckV3/6/0znARTjY10W+jz6ARBtnGGOXkqxVIHA==
+
 semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
