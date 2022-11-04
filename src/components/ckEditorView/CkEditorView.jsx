@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
-import Minimap from '../Minimap/Minimap';
 import styles from './CkEditorView.css';
 import { ScrollSync, ScrollSyncNode } from 'scroll-sync-react';
-// import Minimap from 'react-simple-minimap';
 
 class CkEditorView extends Component {
+  constructor(props) {
+    super(props);
+    this.refMinimap = React.createRef();
+    this.refMinimaphighlighter = React.createRef();
+    this.state = {
+      scrollPercent: 0,
+      windowScroll: 0,
+      windowWidth: document.documentElement.clientWidth,
+      startX: 0,
+      scrollLeft: 0,
+      mouseDown: false,
+      topPosition: 0,
+    };
+  }
+
   renderPage = () => (
     <>
       <h1>Page</h1>
@@ -251,44 +264,61 @@ class CkEditorView extends Component {
     </>
   );
 
+  computePreviewStyle = () => {
+    const { windowWidth } = this.state;
+    const { width } = this.props;
+    const scale = width / windowWidth;
+    return { transform: `scale(${scale || 1})` };
+  };
+
+  computeMinimapStyle = () => {
+    const { width, height } = this.props;
+    return { width, height };
+  };
+
   render() {
     return (
       <div className="container" id="container-view">
-        <div className='split-view'>
-          <div className="minimap-view">
-            <Minimap of={this.renderPage()} />
-          </div>
-          {/* <div className="main-view" id="main-view">
-            {this.renderPage()}
-          </div>
-
-          <div className="main-view" id="main-view1">
-            {this.renderPage()}
-          </div> */}
-
+        <div className="split-view">
           <ScrollSync>
-            <div style={{ display: "flex", position: "relative", height: 700}}>
-              <ScrollSyncNode>
-                <div style={{ overflow: "auto" }}>
-                  <section style={{ height: 1000 }}>
-                    <div className="main-view" id="main-view">
+            <div className="minimap-root">
+              <div
+                className="content"
+                style={{ display: 'flex', position: 'relative', height: 700 }}
+              >
+                <ScrollSyncNode>
+                  <div style={{ overflow: 'auto' }}>
+                    <section style={{ height: 1000 }}>
+                      <div className="main-view" id="main-view">
+                        {this.renderPage()}
+                      </div>
+                    </section>
+                  </div>
+                </ScrollSyncNode>
+                <ScrollSyncNode>
+                  <div style={{ overflow: 'auto' }}>
+                    <section style={{ height: 1000 }}>
+                      <div className="main-view" id="main-view1">
+                        {this.renderPage()}
+                      </div>
+                    </section>
+                  </div>
+                </ScrollSyncNode>
+              </div>
+
+              <div className="minimap-view">
+                <ScrollSyncNode>
+                  <div
+                    className="minimapWindow"
+                    id="minimapWindow"
+                    ref={this.refMinimap}
+                  >
                     {this.renderPage()}
-                    </div>
-                  </section>
-                </div>
-              </ScrollSyncNode>
-              <ScrollSyncNode>
-                <div style={{ overflow: "auto" }}>
-                  <section style={{ height: 1000 }}>
-                   <div className="main-view" id="main-view1">
-                    {this.renderPage()}
-                    </div>
-                  </section>
-                </div>
-              </ScrollSyncNode>
+                  </div>
+                </ScrollSyncNode>
+              </div>
             </div>
           </ScrollSync>
-
         </div>
       </div>
     );
