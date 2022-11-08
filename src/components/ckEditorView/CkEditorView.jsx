@@ -276,6 +276,11 @@ class CkEditorView extends Component {
     return { width, height };
   };
 
+  handleClickEvent = (e) => {
+    const currentTop = e.target.getBoundingClientRect().top;
+    document.getElementById('minimapWindow').scrollTop = Math.round(currentTop);
+  };
+
   render() {
     return (
       <div className="container" id="container-view">
@@ -312,9 +317,11 @@ class CkEditorView extends Component {
                     className="minimapWindow"
                     id="minimapWindow"
                     ref={this.refMinimap}
+                    onClick={this.handleClickEvent}
                   >
                     {this.renderPage()}
                   </div>
+                  
                 </ScrollSyncNode>
               </div>
             </div>
