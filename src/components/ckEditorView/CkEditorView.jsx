@@ -6,7 +6,8 @@ class CkEditorView extends Component {
   constructor(props) {
     super(props);
     this.refMinimap = React.createRef();
-    this.refMinimaphighlighter = React.createRef();
+    this.refMainView = React.createRef();
+    this.refMinimaphighlighter = React.createRef(); //TODO: add a highlighter window
     this.state = {
       scrollPercent: 0,
       windowScroll: 0,
@@ -18,13 +19,14 @@ class CkEditorView extends Component {
     };
   }
 
-  renderPage = () => (
+  renderPage = (isLeft) => (
     <>
       <h1>Page</h1>
-      <p className="pcolor-magenta">
+      <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-        mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-        voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+        mollitia, molestiae <span style={{color:(isLeft ? 'red': '')}}> quas vel sint commodi </span>
+        repudiandae consequuntur
+        voluptatum {(isLeft ? '': <span style={{color:'green'}}> laborum numquam blanditiis harum quisquam </span>)} eius sed odit
         fugiat iusto fuga praesentium optio, eaque rerum! Provident similique
         accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut
         molestias architecto voluptate aliquam nihil, eveniet aliquid culpa
@@ -265,9 +267,10 @@ class CkEditorView extends Component {
   );
 
   computePreviewStyle = () => {
-    const { windowWidth } = this.state;
-    const { width } = this.props;
-    const scale = width / windowWidth;
+    //const { windowWidth } = this.state;
+    //const { width } = this.props;
+    //const scale = width / windowWidth;
+    console.log('minimap width = ', this.refMinimap.clientWidth);
     return { transform: `scale(${scale || 1})` };
   };
 
@@ -282,6 +285,8 @@ class CkEditorView extends Component {
   };
 
   render() {
+    //const previewStyle = this.computePreviewStyle();
+
     return (
       <div className="container" id="container-view">
         <div className="split-view">
@@ -294,8 +299,8 @@ class CkEditorView extends Component {
                 <ScrollSyncNode>
                   <div style={{ overflow: 'auto' }}>
                     <section style={{ height: 1000 }}>
-                      <div className="main-view" id="main-view">
-                        {this.renderPage()}
+                      <div className="main-view" id="main-view" ref={this.refMainView}>
+                        {this.renderPage(true)}
                       </div>
                     </section>
                   </div>
@@ -304,7 +309,7 @@ class CkEditorView extends Component {
                   <div style={{ overflow: 'auto' }}>
                     <section style={{ height: 1000 }}>
                       <div className="main-view" id="main-view1">
-                        {this.renderPage()}
+                        {this.renderPage(false)}
                       </div>
                     </section>
                   </div>
@@ -319,7 +324,7 @@ class CkEditorView extends Component {
                     ref={this.refMinimap}
                     onClick={this.handleClickEvent}
                   >
-                    {this.renderPage()}
+                    {this.renderPage(false)}
                   </div>
                   
                 </ScrollSyncNode>
