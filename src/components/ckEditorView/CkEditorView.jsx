@@ -267,10 +267,10 @@ class CkEditorView extends Component {
   );
 
   computePreviewStyle = () => {
-    //const { windowWidth } = this.state;
-    //const { width } = this.props;
-    //const scale = width / windowWidth;
-    console.log('minimap width = ', this.refMinimap.clientWidth);
+    const { windowWidth } = this.state;
+    const { width } = this.props;
+    const scale = width / windowWidth;
+    //console.log('minimap width = ', this.refMinimap.clientWidth);
     return { transform: `scale(${scale || 1})` };
   };
 
