@@ -6,7 +6,7 @@ git clone https://tudoreanu@bitbucket.org/wellington-m/content-minimap-react.git
 ## then change to the directory
 cd content-minimap-react/
 
-## then use yarn to install vite
+## then use yarn to install sync-scroll-react
 yarn add scroll-sync-react
 
 ## run the server
