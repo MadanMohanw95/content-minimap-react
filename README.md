@@ -12,4 +12,4 @@ yarn add scroll-sync-react
 ## run the server
 yarn start
 
-# connect a browser to the localhost
+## connect a browser to the localhost
