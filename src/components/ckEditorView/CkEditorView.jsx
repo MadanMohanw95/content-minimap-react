@@ -270,7 +270,7 @@ class CkEditorView extends Component {
     //const { windowWidth } = this.state;
     //const { width } = this.props;
     //const scale = width / windowWidth;
-    console.log('minimap width = ', this.refMinimap.clientWidth);
+    console.log('minimap width = ', this.refMinimap.current.clientWidth);
     return { transform: `scale(${scale || 1})` };
   };
 
