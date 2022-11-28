@@ -75,6 +75,7 @@
 
 .minimap-view {
   flex: 1;
+  color: lightgray;
 }
 
 .content {
