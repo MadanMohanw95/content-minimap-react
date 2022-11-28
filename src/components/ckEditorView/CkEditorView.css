@@ -1,22 +1,25 @@
 .minimapWindow {
-  width: 114px;
+  width: 200px;
   height: 300px;
-  position: fixed;
-  top: 0;
-  right: 0;
   overflow: scroll;
   overflow: hidden;
+  font-size: 2px;
+  overflow-y: scroll;
+  line-height: 8px;
+  margin: 0 0 0 auto;
+  overflow: scroll;
+  overflow-x: hidden;
+  cursor: pointer;
 }
 
-.minimapWindow__preview {
-  width: 100vw;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  transform-origin: left top;
+.minimapWindow::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
-
+/* Optional: show position indicator in red */
+.minimapWindow::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
 .main-view {
   width: 100%;
   height: 50rem;
@@ -39,4 +42,41 @@
 
 .split-view {
   display: flex;
+}
+
+/* .minimapWindow__preview {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  transform-origin: left top;
+} */
+/* 
+.mini-wrapper {
+  position: relative;
+}
+.highlighter {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: scroll;
+  overflow: hidden;
+  z-index: 1000;
+  background: black;
+  opacity: 0.5;
+} */
+
+.minimap-root {
+  display: flex;
+}
+
+.minimap-view {
+  flex: 1;
+}
+
+.content {
+  flex: 3;
 }
